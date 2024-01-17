@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  pgdb:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: todo-app-plus
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - pgdb-data:/var/lib/postgresql/data
+
+  pgadmin:
+    depends_on:
+      - pgdb
+    image: dpage/pgadmin4:7.7
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@openvalue.de
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - "8081:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  keycloak:
+    depends_on:
+      - pgdb
+    image: quay.io/keycloak/keycloak:23.0.4
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./realm-export.json:/opt/keycloak/data/import/realm-export.json
+    command: ['start-dev', '--import-realm', '-Dquarkus.http.cors=true', '-Dquarkus.http.cors.origins=/.*/'] # [PoI] Workaround for CORS...
+
+
+volumes:
+  pgdb-data:
+  pgadmin-data:

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-user
+      author: lpo
+      changes:
+        - createTable:
+            tableName: tbl_user
+            columns:
+              - column:
+                  name: user_id
+                  type: varchar2(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar2(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar2(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: display_name
+                  type: varchar2(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role
+                  type: varchar2(20)
+                  constraints:
+                    nullable: false

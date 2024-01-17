@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-board_member
+      author: lpo
+      changes:
+        - createTable:
+            tableName: tbl_board_member
+            columns:
+              - column:
+                  name: board_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_board_member_board
+                    references: tbl_board(board_id)
+              - column:
+                  name: user_id
+                  type: varchar2(100)
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_board_member_user
+                    references: tbl_user(user_id)
+        - addPrimaryKey:
+            tableName: tbl_board_member
+            columnNames: board_id,user_id
+            constraintName: pk_board_member

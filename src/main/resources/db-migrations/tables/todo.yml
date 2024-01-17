@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-todo
+      author: lpo
+      changes:
+        - createTable:
+            tableName: tbl_todo
+            columns:
+              - column:
+                  name: todo_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: content
+                  type: varchar2(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: board_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_todo_board
+                    references: tbl_board(board_id)

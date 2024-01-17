@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - property:
+      name: byteArrayType
+      value: varbinary
+      dbms: h2
+  - property:
+      name: byteArrayType
+      value: bytea
+      dbms: postgresql
+
+  - include:
+      file: db-migrations/tables/user.yml
+  - include:
+      file: db-migrations/tables/board.yml
+  - include:
+      file: db-migrations/tables/board_member.yml
+  - include:
+      file: db-migrations/tables/todo.yml
