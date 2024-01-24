@@ -39,7 +39,7 @@ Can the modern Java dev survive without application frameworks like Spring-Boot?
 
 ## Code walkthrough
 
-- Javalin
+- `Javalin`: Web framework
     - *[TodoAppPlusMain](src/main/java/de/lpo/todo/TodoAppPlusMain.java): How to set up a Javalin server
     - *[ApplicationContext](src/main/java/de/lpo/todo/dependencies/ApplicationContext.java): DI without any frameworks
     - [ConfigService](src/main/java/de/lpo/todo/config/ConfigService.java): Server configuration without any frameworks
@@ -47,14 +47,14 @@ Can the modern Java dev survive without application frameworks like Spring-Boot?
       programmatically
     - *[DbMigrationService](src/main/java/de/lpo/todo/database/DbMigrationService.java): Perform Liquibase update
       programmatically
-- jOOQ
+- `jOOQ`: Type safe SQL queries in Java
     - [pom.xml](pom.xml): Generate classes from Liquibase migrations
     - *[Generated classes](target/generated-sources/jooq/org/jooq/generated/Tables.java): Everything in the database has
       a class representation
     - [JooqService](src/main/java/de/lpo/todo/database/JooqService.java): Service for access to the DSL
     - [TodoRepo](src/main/java/de/lpo/todo/domain/repository/TodoRepo.java): Example for simple CRUD queries
     - *[BoardRepo](src/main/java/de/lpo/todo/domain/repository/BoardRepo.java): Example for complexer queries
-- JTE (Server)
+- `JTE`: Type safe template engine
     - [pom.xml](pom.xml): Precompile templates and generate model classes
     - [Generated classes](target/generated-sources/jte/gg/jte/generated/precompiled/Templates.java): All templates are
       accessible in a type safe way
@@ -62,7 +62,7 @@ Can the modern Java dev survive without application frameworks like Spring-Boot?
     - *[JteHandler](src/main/java/de/lpo/todo/web/JteHandler.java): Custom integration into Javalin
     - *[BoardEditActionHandler](src/main/java/de/lpo/todo/web/handlers/BoardEditActionHandler.java): Example endpoint
       that responds a model to render
-- Pac4j
+- `pac4j`: Security framework
     - [TodoAppPlusMain](src/main/java/de/lpo/todo/TodoAppPlusMain.java): 'before' calls that invoke security handlers
     - *[OidcSecurityService](src/main/java/de/lpo/todo/auth/OidcSecurityService.java): Security setup and integration
       into Javalin
@@ -70,7 +70,7 @@ Can the modern Java dev survive without application frameworks like Spring-Boot?
       related security
     - [workaround package](src/main/java/de/lpo/todo/auth/workaround/package-info.java): Copied classes, since some
       Maven artifacts don't work
-- JTE & HTMX (Templates)
+- `HTMX`: Dynamic websites without Javascript
     - *[todos.jte](src/main/templates/todos.jte): Example template for a page
     - *[todo-list.jte](src/main/templates/todos/todo-list.jte): Multifunctional components & hx-vals
     - *[todo-item.jte](src/main/templates/todos/todo-item.jte): JTE loops / hx-post / hx-swap / hx-on\*
