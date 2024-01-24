@@ -10,9 +10,12 @@
 }
 
 <div id="todoList" class="todo-list">
+    <%-- [PoI] JTE loops --%>
     @for(var todo : todos)
         @template.todos.todo-item(todo = todo)
     @endfor
+
+    <%-- [PoI] Send AJAX-POST-Request on submit / insert response HTML before this / clear input afterwards --%>
     <form hx-post="${todosUrl}"
           hx-target="this"
           hx-swap="beforebegin"

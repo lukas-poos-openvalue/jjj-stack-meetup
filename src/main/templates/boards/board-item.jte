@@ -19,7 +19,6 @@
     final var itemActionsId = "board" + board.id().hash() + "Actions";
 }
 
-<%-- [PoI] Each board item has a unique id that can be the target for HTMX swaps --%>
 <div id="${itemId}" class="board-card">
     <a class="board-card-body" href="${boardUrl}/todos">
         <header>${board.title()}</header>

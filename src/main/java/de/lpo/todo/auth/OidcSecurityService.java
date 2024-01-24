@@ -17,7 +17,7 @@ import org.pac4j.oidc.config.KeycloakOidcConfiguration;
 
 /**
  * Central service for managing web security.
- * The service utilizes 'pac4j' and OIDC for authentication and authorization.
+ * The service utilizes 'Pac4j' and OIDC for authentication and authorization.
  */
 public class OidcSecurityService {
     public static final String CLIENT_NAME = KeycloakOidcClient.class.getSimpleName();

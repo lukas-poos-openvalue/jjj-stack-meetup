@@ -43,14 +43,6 @@ public class TodoAppPlusMain {
                 before("admin", APP_CTX.oidcSecurityService.handleAdminRoleRequired()); // [PoI] Admin path uses role security
                 get("admin", APP_CTX.adminPageHandler);
 
-                path("modals", () -> {
-                    path("/boards/add", () -> get(APP_CTX.boardsAddModalHandler));
-                    path("/boards/{board-id-hashed}/edit", () -> {
-                        before(APP_CTX.boardSecurityService.handleBoardAccess()); // [PoI] Board path uses access security
-                        get(APP_CTX.boardEditModalHandler);
-                    });
-                });
-
                 path("boards", () -> {
                     get(APP_CTX.boardsPageHandler);
                     post(APP_CTX.boardsAddActionHandler);
@@ -70,6 +62,14 @@ public class TodoAppPlusMain {
                                 delete(APP_CTX.todoDeleteActionHandler);
                             });
                         });
+                    });
+                });
+
+                path("modals", () -> {
+                    path("/boards/add", () -> get(APP_CTX.boardsAddModalHandler));
+                    path("/boards/{board-id-hashed}/edit", () -> {
+                        before(APP_CTX.boardSecurityService.handleBoardAccess()); // [PoI] Board path uses access security
+                        get(APP_CTX.boardEditModalHandler);
                     });
                 });
             });

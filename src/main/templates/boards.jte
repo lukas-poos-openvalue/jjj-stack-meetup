@@ -6,12 +6,10 @@
 @param User currentUser
 @param Collection<Board> boards
 
-<%-- [PoI] Include other templates easily --%>
 @template.base.page-template(content = @`
     <nav class="container-fluid">
         <ul>
             <li>
-                <%-- [PoI] Navigation via simple anchors --%>
                 <a href="/api/logout"
                    onclick="return confirm('Are you sure you want to log out?')"
                    role="button"
@@ -39,7 +37,6 @@
         @template.boards.board-list(currentUser = currentUser, boards = boards)
     </main>
 
-    <%-- [PoI] Styles in body --%>
     <style>
         nav {
             position: sticky;

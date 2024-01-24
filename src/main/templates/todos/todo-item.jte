@@ -18,7 +18,7 @@
            hx-target="#${itemId}"
            hx-swap="outerHTML"/>
 
-    <%-- [PoI] Support two states of todo items: editing true | false --%>
+    <%-- [PoI] Support two states: editing true | false --%>
     @if(editing)
         <input class="content-write"
                name="content"

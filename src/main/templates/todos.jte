@@ -6,6 +6,7 @@
     <nav class="container-fluid">
         <ul>
             <li>
+                <%-- [PoI] Navigation via simple anchors --%>
                 <a href="/app/boards" role="button" class="secondary outline">Back</a>
             </li>
         </ul>
@@ -19,9 +20,11 @@
 
     <main class="container">
         <h1>Board ${board.title()}</h1>
+        <%-- [PoI] Include other templates easily --%>
         @template.todos.todo-list(boardId = board.id(), todos = board.todos().unwrap())
     </main>
 
+    <%-- [PoI] Styles in body --%>
     <style>
         nav {
             position: sticky;
