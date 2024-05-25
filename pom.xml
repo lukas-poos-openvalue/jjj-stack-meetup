@@ -11,19 +11,19 @@
     <properties>
         <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.source>21</maven.compiler.source>
-        <version.javalin>5.6.3</version.javalin>
+        <version.javalin>6.1.4</version.javalin>
         <version.jte>3.1.6</version.jte>
-        <version.jooq>3.19.1</version.jooq>
-        <version.pac4j>6.0.1</version.pac4j>
+        <version.jooq>3.19.8</version.jooq>
+        <version.pac4j>6.0.2</version.pac4j>
         <version.liquibase>4.25.0</version.liquibase>
-        <version.postgresql>42.6.0</version.postgresql>
+        <version.postgresql>42.7.3</version.postgresql>
         <version.hikaricp>5.1.0</version.hikaricp>
         <version.logback>1.4.12</version.logback>
         <version.sqids>0.1.0</version.sqids>
         <version.junit5>5.10.0</version.junit5>
         <version.assertj>3.24.2</version.assertj>
         <version.mockito>5.4.0</version.mockito>
-        <version.testcontainers>1.19.3</version.testcontainers>
+        <version.testcontainers>1.19.7</version.testcontainers>
     </properties>
 
     <dependencies>
@@ -48,6 +48,12 @@
             <artifactId>jooq</artifactId>
             <version>${version.jooq}</version>
         </dependency>
+<!--        TODO Create PR for fixes!-->
+<!--        <dependency>-->
+<!--            <groupId>org.pac4j</groupId>-->
+<!--            <artifactId>javalin-pac4j</artifactId>-->
+<!--            <version>6.0.0</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.pac4j</groupId>
             <artifactId>pac4j-oidc</artifactId>
@@ -88,6 +94,11 @@
             <artifactId>liquibase-slf4j</artifactId>
             <version>5.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.aayushatharva.brotli4j</groupId>
+            <artifactId>brotli4j</artifactId>
+            <version>1.16.0</version>
+        </dependency>
 
         <!-- Test dependencies -->
         <dependency>
@@ -125,6 +136,18 @@
             <artifactId>postgresql</artifactId>
             <version>${version.testcontainers}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Increase versions of transitive dependencies to address vulnerabilities -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.26.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.1.5</version>
         </dependency>
     </dependencies>
 
@@ -205,7 +228,7 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>jooq-codegen</id>
+                        <id>jte-codegen</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>

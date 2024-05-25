@@ -26,6 +26,7 @@ ${content}
         const cookie = cookies.find(c => c.indexOf(name) !== -1);
         return cookie ? cookie.split('=')[1] : undefined;
     }
+
     document.body.addEventListener('htmx:configRequest', function(evt) {
         const csrfToken = getCookieByName('${Pac4jConstants.CSRF_TOKEN}');
         if (csrfToken) {
